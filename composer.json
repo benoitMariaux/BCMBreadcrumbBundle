@@ -1,0 +1,28 @@
+{
+    "name": "benoitmariaux/bm-breadcrumbbundle",
+    "description": "Provide hierarchical breadcrumb",
+    "keywords": ["breadcrumb", "navigation"],
+    "homepage": "https://github.com/benoitMariaux/BMBreadcrumbBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "repositories":[
+        {
+            "type":"git",
+            "url":"git://github.com/benoitMariaux/BMBreadcrumbBundle.git"
+        }
+    ],
+
+    "authors": [
+        {
+            "name": "Benoît Mariaux",
+            "email": "benoit.mariaux@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": "2.3.*"
+    },
+    "autoload": {
+        "psr-0": { "BM\\Breadcrumb\\BreadcrumbBundle": "" }
+    },
+    "target-dir": "BM/Breadcrumb/BreadcrumbBundle"
+}
