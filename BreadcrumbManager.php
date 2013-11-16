@@ -1,6 +1,6 @@
 <?php
 
-namespace BM\Bundle\Breadcrumb;
+namespace BM\Breadcrumb;
 
 class BreadcrumbManager
 {

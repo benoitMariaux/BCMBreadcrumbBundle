@@ -1,6 +1,6 @@
 <?php
 
-namespace BM\Bundle\Breadcrumb\DependencyInjection;
+namespace BM\Breadcrumb\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
