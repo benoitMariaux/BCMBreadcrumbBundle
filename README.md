@@ -1,4 +1,4 @@
-BreadCrumbBundle
+BMBreadcrumbBundle
 ================
 
 Work in progress
