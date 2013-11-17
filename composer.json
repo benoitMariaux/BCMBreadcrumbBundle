@@ -1,6 +1,6 @@
 {
     "name": "benoitmariaux/bcm-breadcrumbbundle",
-    "description": "Provide a breadcrumb",
+    "description": "Provides tools to create breadcrumb",
     "keywords": ["breadcrumb", "navigation"],
     "homepage": "https://github.com/benoitMariaux/BCMBreadcrumbBundle",
     "type": "symfony-bundle",
