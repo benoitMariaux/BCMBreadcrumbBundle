@@ -22,7 +22,7 @@
         "symfony/framework-bundle": "2.3.*"
     },
     "autoload": {
-        "psr-0": { "BM\\Breadcrumb\\BreadcrumbBundle": "" }
+        "psr-0": { "BM\\BreadcrumbBundle": "dev-master" }
     },
-    "target-dir": "BM/Breadcrumb/BreadcrumbBundle"
+    "target-dir": "BM/BreadcrumbBundle"
 }

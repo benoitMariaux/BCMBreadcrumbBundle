@@ -1,6 +1,6 @@
 <?php
 
-namespace BM\Breadcrumb;
+namespace BM\BreadcrumbBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
