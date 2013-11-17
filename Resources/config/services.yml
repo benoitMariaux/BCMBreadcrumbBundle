@@ -1,0 +1,9 @@
+parameters:
+    bm_breadcrumb.manager.class: BM\BreadcrumbBundle\Service\BreadcrumbManager
+
+services:
+    bm_breadcrumb.manager:
+        class: %bm_breadcrumb.manager.class%
+        arguments: [@request, @router, @templating]
+        scope: request
+        public: true

@@ -1,0 +1,17 @@
+<ul class="breadcrumb" style="background-color: transparent; margin: 0 0 5px 0; padding: 0;">
+    {% for item in items %}
+        <li>
+            {% if item.path and item != items.last %}
+                <a title="{{ item.label|trans({}, 'breadcrumb') }}" href="{{ item.path }}">
+                    {{ item.label|trans({}, 'breadcrumb') }}
+                </a>
+            {% else %}
+                {{ item.label|trans({}, 'breadcrumb') }}
+            {% endif %}
+
+            {% if item != items.last %}
+                <span class="divider">/</span>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
