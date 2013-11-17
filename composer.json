@@ -1,6 +1,6 @@
 {
     "name": "benoitmariaux/bm-breadcrumbbundle",
-    "description": "Provide hierarchical breadcrumb",
+    "description": "Provide a breadcrumb",
     "keywords": ["breadcrumb", "navigation"],
     "homepage": "https://github.com/benoitMariaux/BMBreadcrumbBundle",
     "type": "symfony-bundle",
@@ -22,7 +22,7 @@
         "symfony/framework-bundle": "2.3.*"
     },
     "autoload": {
-        "psr-0": { "BM\\BreadcrumbBundle": "dev-master" }
+        "psr-0": { "BM\\BreadcrumbBundle": "" }
     },
     "target-dir": "BM/BreadcrumbBundle"
 }
