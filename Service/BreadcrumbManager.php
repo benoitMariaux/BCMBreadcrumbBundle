@@ -1,8 +1,8 @@
 <?php
 
-namespace BM\BreadcrumbBundle\Service;
+namespace BCM\BreadcrumbBundle\Service;
 
-use BM\BreadcrumbBundle\Model\Item;
+use BCM\BreadcrumbBundle\Model\Item;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
@@ -103,7 +103,7 @@ class BreadcrumbManager
 
     public function render()
     {
-        return $this->templateEngine->render('@BMBreadcrumb/index.html.twig', array(
+        return $this->templateEngine->render('@BCMBreadcrumb/index.html.twig', array(
             'items' => $this->reversedItems()
         ));
     }

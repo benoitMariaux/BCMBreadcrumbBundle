@@ -1,6 +1,6 @@
 <?php
 
-namespace BM\BreadcrumbBundle\Model;
+namespace BCM\BreadcrumbBundle\Model;
 
 class Item
 {

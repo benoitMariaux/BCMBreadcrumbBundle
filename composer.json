@@ -1,14 +1,14 @@
 {
-    "name": "benoitmariaux/bm-breadcrumbbundle",
+    "name": "benoitmariaux/bcm-breadcrumbbundle",
     "description": "Provide a breadcrumb",
     "keywords": ["breadcrumb", "navigation"],
-    "homepage": "https://github.com/benoitMariaux/BMBreadcrumbBundle",
+    "homepage": "https://github.com/benoitMariaux/BCMBreadcrumbBundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "repositories":[
         {
             "type":"git",
-            "url":"git://github.com/benoitMariaux/BMBreadcrumbBundle.git"
+            "url":"git://github.com/benoitMariaux/BCMBreadcrumbBundle.git"
         }
     ],
 
@@ -22,7 +22,7 @@
         "symfony/framework-bundle": "2.3.*"
     },
     "autoload": {
-        "psr-0": { "BM\\BreadcrumbBundle": "" }
+        "psr-0": { "BCM\\BreadcrumbBundle": "" }
     },
-    "target-dir": "BM/BreadcrumbBundle"
+    "target-dir": "BCM/BreadcrumbBundle"
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace BM\BreadcrumbBundle\DependencyInjection;
+namespace BCM\BreadcrumbBundle\DependencyInjection;
 
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 
-class BMBreadcrumbExtension extends Extension
+class BCMBreadcrumbExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
