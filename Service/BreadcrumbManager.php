@@ -29,22 +29,17 @@ class BreadcrumbManager
         $this->items = new ArrayCollection();
     }
 
-    public function __toString()
+    public function render($parameters = array())
     {
-        return $this->render();
-    }
-
-    public function build($parameters = null)
-    {
-        if ($parameters) {
-            $this->setParameters($parameters);
-        }
-
-        $this->setParameters(array_merge($this->request->attributes->all(), $this->getParameters()));
+        $this->parameters = array_merge($this->request->attributes->all(), $parameters);
 
         $currentRoute = $this->router->getRouteCollection()->get($this->request->get('_route'));
 
         $this->buildRecursivelyItemsByRoute($currentRoute, $this->request->get('_route'));
+
+        return $this->templateEngine->render('@BCMBreadcrumb/index.html.twig', array(
+            'items' => $this->reverseItems()
+        ));
     }
 
     protected function buildRecursivelyItemsByRoute(Route $route, $routeName)
@@ -55,7 +50,7 @@ class BreadcrumbManager
 
             $path = $this->routeToPath($route, $routeName);
             $item->setPath($path);
-            $this->addItem($item);
+            $this->items->add($item);
 
             if ($route->hasDefault(self::KEY_PARENT)) {
                 $parentRoute = $this->router->getRouteCollection()->get($route->getDefault(self::KEY_PARENT));
@@ -65,7 +60,6 @@ class BreadcrumbManager
 
         return $this->items;
     }
-
 
     protected function routeToPath(Route $route, $routeName)
     {
@@ -93,54 +87,17 @@ class BreadcrumbManager
         $label = trim($label);
         $replace = trim($replace);
 
-        foreach ($this->getItems() as $key => $item) {
-            if ($item->getLabel() == $label) {
+        foreach ($this->items as $key => $item) {
+            if ($item instanceof Item && $item->getLabel() == $label) {
                 $item->setLabel($replace);
                 $this->items[$key] = $item;
             }
         }
     }
 
-    public function render()
+    protected function reverseItems()
     {
-        return $this->templateEngine->render('@BCMBreadcrumb/index.html.twig', array(
-            'items' => $this->reversedItems()
-        ));
-    }
-
-    public function addItem(Item $item)
-    {
-        $this->items->add($item);
-    }
-
-    public function setItems($items)
-    {
-        $this->items = $items;
-    }
-
-    public function getItems()
-    {
-        return $this->items;
-    }
-
-    public function reversedItems()
-    {
-        $items = array_reverse($this->getItems()->toArray());
+        $items = array_reverse($this->items->toArray());
         return new ArrayCollection($items);
-    }
-
-    public function setRequest(Request $request = null)
-    {
-        $this->request = $request;
-    }
-
-    public function setParameters($parameters)
-    {
-        $this->parameters = $parameters;
-    }
-
-    public function getParameters()
-    {
-        return $this->parameters;
     }
 }
