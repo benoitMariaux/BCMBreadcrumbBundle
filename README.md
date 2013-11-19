@@ -75,6 +75,6 @@ Inject all parameters you need for current breadcrumb routes and labels
 
 ### Label translation
 
-You can define translations for your labels with the default domain `breadcrumb`, par exemple :
+You can define translations for your labels with the default domain `breadcrumb`:
 * breadcrumb.fr.xliff
 * breadcrumb.de.xliff
