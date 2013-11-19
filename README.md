@@ -36,20 +36,20 @@ You have to configure two attributes (`label` and `parent`) to `defaults` in rou
 homepage:
     pattern: /
     defaults:
-        _controller: AcmeBundle:Default:home
+        _controller: AcmeDemoBundle:Default:home
         label: homepage # no parent for homepage
 
 articles:
     pattern: /articles
     defaults:
-        _controller: AcmeBundle:Article:list
+        _controller: AcmeDemoBundle:Article:list
         label: ARTICLES
         parent: homepage
 
 article:
     pattern: /articles/show/{article_id}
     defaults:
-        _controller: AcmeBundle:Article:article
+        _controller: AcmeDemoBundle:Article:article
         label: '{article_title}'
         parent: articles
 ```
