@@ -34,11 +34,9 @@ class BreadcrumbManager
         $this->parameters = array_merge($this->request->attributes->all(), $parameters);
 
         $currentRoute = $this->router->getRouteCollection()->get($this->request->get('_route'));
-
         $this->buildRecursivelyItemsByRoute($currentRoute, $this->request->get('_route'));
 
-        dd($this->templateEngine);
-        return $this->templateEngine->render('@BCMBreadcrumb/index.html.twig', array(
+        return $this->templateEngine->render('@BCMBreadcrumb/bcm-breadcrumb.html.twig', array(
             'items' => $this->reverseItems()
         ));
     }
