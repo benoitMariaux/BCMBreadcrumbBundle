@@ -7,15 +7,16 @@ Installation
 ------------
 
 With [composer](http://packagist.org), add:
-
+```js
     {
         require: {
             "benoitmariaux/bcm-breadcrumbbundle": "dev-master"
         }
     }
+```    
 
 Then enable it in your kernel:
-
+```php
     // app/AppKernel.php
     public function registerBundles()
     {
@@ -23,7 +24,7 @@ Then enable it in your kernel:
             ...
             new BCM\BreadcrumbBundle\BCMBreadcrumbBundle(),
             ...
-
+```
 
 Usage
 -----
@@ -31,7 +32,7 @@ Usage
 ### First step : the routes
 
 You have to configure two attributes (`label` and `parent`) to `defaults` in routes you want to add to your breadcrumb :
-
+```yaml
     homepage:
         pattern: /
         defaults:
@@ -51,10 +52,11 @@ You have to configure two attributes (`label` and `parent`) to `defaults` in rou
             _controller: AcmeBundle:Article:article
             label: '{article_title}'
             parent: articles
+```
 
 ### Second step : the controller
 Inject all parameters you need for current breadcrumb routes and labels
-
+```php
     $breadcrumb = $this->get('bcm_breadcrumb.manager')->render(array(
         'article_title' => $article->getTitle(), // useful for article route label
         'article_id' => $article->getId() // useful for article route pattern
@@ -64,11 +66,12 @@ Inject all parameters you need for current breadcrumb routes and labels
         'article' => $article,
         'breadcrumb' => $breadcrumb
     ));
+```
 
 ### Last step : the view
-
+```twig
     {{ breadcrumb|raw }}
-
+```
 
 Configuration
 -------------
