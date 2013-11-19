@@ -37,6 +37,7 @@ class BreadcrumbManager
 
         $this->buildRecursivelyItemsByRoute($currentRoute, $this->request->get('_route'));
 
+        dd($this->templateEngine);
         return $this->templateEngine->render('@BCMBreadcrumb/index.html.twig', array(
             'items' => $this->reverseItems()
         ));
@@ -46,9 +47,10 @@ class BreadcrumbManager
     {
         if ($route->hasDefault(self::KEY_LABEL)) {
             $item = new Item();
-            $item->setLabel($route->getDefault(self::KEY_LABEL));
+            $label = $this->generateLabel($route->getDefault(self::KEY_LABEL));
+            $item->setLabel($label);
 
-            $path = $this->routeToPath($route, $routeName);
+            $path = $this->generatePathRoute($route, $routeName);
             $item->setPath($path);
             $this->items->add($item);
 
@@ -61,7 +63,7 @@ class BreadcrumbManager
         return $this->items;
     }
 
-    protected function routeToPath(Route $route, $routeName)
+    protected function generatePathRoute(Route $route, $routeName)
     {
         $pattern = $route->getPath();
         $params = array();
@@ -82,17 +84,22 @@ class BreadcrumbManager
         return $this->router->generate($routeName, $params);
     }
 
-    public function replaceLabel($label, $replace)
+    protected function generateLabel($label)
     {
-        $label = trim($label);
-        $replace = trim($replace);
+        preg_match_all('`\{(.+)\}`isU', $label, $out);
 
-        foreach ($this->items as $key => $item) {
-            if ($item instanceof Item && $item->getLabel() == $label) {
-                $item->setLabel($replace);
-                $this->items[$key] = $item;
+        if ($labelParameters = $out[0]) {
+            if (is_array($labelParameters)) {
+                foreach ($labelParameters as $param) {
+                    $paramName = trim(trim($param,'}'),'{');
+                    if (isset($this->parameters[$paramName])) {
+                        $label = str_replace($param, $this->parameters[$paramName], $label);
+                    }
+                }
             }
         }
+
+        return $label;
     }
 
     protected function reverseItems()
