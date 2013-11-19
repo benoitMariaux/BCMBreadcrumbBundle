@@ -32,7 +32,7 @@ In progress...
 Usage
 -----
 
-### First step
+### First step : the routes
 
 You have to configure two attributes (`label` and `parent`) to `defaults` in routes you want to add to your breadcrumb :
 
@@ -53,8 +53,28 @@ You have to configure two attributes (`label` and `parent`) to `defaults` in rou
         pattern: /articles/show/{article_id}
         defaults:
             _controller: AcmeBundle:Article:article
-            label: ARTICLE
+            label: '{article_title}'
             parent: articles
 
-### Second step
-In progress...
+### Second step : the controller
+Inject all parameters you need for current breadcrumb routes and labels
+
+    $breadcrumb = $this->get('bcm_breadcrumb.manager')->render(array(
+        'article_title' => $article->getTitle(), // useful for article route label
+        'article_id' => $article->getId() // useful for article route pattern
+    ));
+
+    return $this->render('AcmeDemoBundle:Default:article.html.twig', array(
+        'article' => $article,
+        'breadcrumb' => $breadcrumb
+    ));
+
+### Last step : the view
+
+    {{ breadcrumb|raw }}
+
+### Label translation
+
+You can define translations for your labels with the default domain `breadcrumb`, par exemple :
+* breadcrumb.fr.xliff
+* breadcrumb.de.xliff
