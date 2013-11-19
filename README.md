@@ -24,10 +24,6 @@ Then enable it in your kernel:
             new BCM\BreadcrumbBundle\BCMBreadcrumbBundle(),
             ...
 
-Configuration
--------------
-
-In progress...
 
 Usage
 -----
@@ -73,7 +69,14 @@ Inject all parameters you need for current breadcrumb routes and labels
 
     {{ breadcrumb|raw }}
 
-### Label translation
+
+Configuration
+-------------
+
+In progress...
+
+Label translation
+-----------------
 
 You can define translations for your labels with the default domain `breadcrumb`:
 * breadcrumb.fr.xliff
