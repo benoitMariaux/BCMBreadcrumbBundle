@@ -73,8 +73,8 @@ return $this->render('AcmeDemoBundle:Default:article.html.twig', array(
 {{ breadcrumb|raw }}
 ```
 
-View
-----
+Your own view
+-------------
 The default view is:
 `vendor/benoitmariaux/bcm-breadcrumbbundle/BCM/BreadcrumbBundle/Resources/views/bcm-breadcrumb.html.twig`
 
