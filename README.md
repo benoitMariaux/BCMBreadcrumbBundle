@@ -73,10 +73,13 @@ return $this->render('AcmeDemoBundle:Default:article.html.twig', array(
 {{ breadcrumb|raw }}
 ```
 
-Configuration
--------------
+View
+----
+The default view is:
+`vendor/benoitmariaux/bcm-breadcrumbbundle/BCM/BreadcrumbBundle/Resources/views/bcm-breadcrumb.html.twig`
 
-In progress...
+You can overwrite it by creating your own here:
+`app/Resources/BCMBreadcrumbBundle/views/bcm-breadcrumb.html.twig`
 
 Label translation
 -----------------
