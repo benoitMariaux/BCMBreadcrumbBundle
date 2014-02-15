@@ -2,6 +2,7 @@
 
 namespace BCM\BreadcrumbBundle\Service;
 
+use BCM\BreadcrumbBundle\Exception\RouteNotFoundException;
 use BCM\BreadcrumbBundle\Model\Item;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,6 +35,11 @@ class BreadcrumbManager
         $this->parameters = array_merge($this->request->attributes->all(), $parameters);
 
         $currentRoute = $this->router->getRouteCollection()->get($this->request->get('_route'));
+
+        if (!$currentRoute) {
+            throw new RouteNotFoundException();
+        }
+
         $this->buildRecursivelyItemsByRoute($currentRoute, $this->request->get('_route'));
 
         return $this->templateEngine->render('@BCMBreadcrumb/bcm-breadcrumb.html.twig', array(
@@ -54,6 +60,11 @@ class BreadcrumbManager
 
             if ($route->hasDefault(self::KEY_PARENT)) {
                 $parentRoute = $this->router->getRouteCollection()->get($route->getDefault(self::KEY_PARENT));
+
+                if (!$parentRoute) {
+                    throw new RouteNotFoundException();
+                }
+
                 $this->buildRecursivelyItemsByRoute($parentRoute, $route->getDefault(self::KEY_PARENT));
             }
         }
